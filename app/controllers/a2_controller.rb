@@ -1,6 +1,4 @@
-class A2Controller < ApplicationController
-  layout "application"
-  
+class A2Controller < ApplicationController  
   def map
   end
 end
