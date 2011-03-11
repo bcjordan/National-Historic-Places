@@ -3,9 +3,11 @@
 one:
   lat: 1.5
   long: 1.5
+  name: MyName
   html: MyText
 
 two:
   lat: 1.5
   long: 1.5
+  name: MyName
   html: MyText
