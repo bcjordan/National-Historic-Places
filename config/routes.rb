@@ -1,4 +1,6 @@
 NationalHistoricPlaces::Application.routes.draw do
+  match 'a2' => 'a2#map'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
