@@ -1,8 +1,8 @@
 class CreatePlaces < ActiveRecord::Migration
   def self.up
     create_table :places do |t|
-      t.float :lat
-      t.float :lng
+      t.decimal :lat, :precision => 10, :scale => 6
+      t.decimal :lng, :precision => 10, :scale => 6
       t.text :name
       t.text :html
 

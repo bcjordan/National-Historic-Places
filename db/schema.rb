@@ -13,8 +13,8 @@
 ActiveRecord::Schema.define(:version => 20110311002634) do
 
   create_table "places", :force => true do |t|
-    t.float    "lat"
-    t.float    "lng"
+    t.decimal  "lat",        :precision => 10, :scale => 6
+    t.decimal  "lng",        :precision => 10, :scale => 6
     t.text     "name"
     t.text     "html"
     t.datetime "created_at"
