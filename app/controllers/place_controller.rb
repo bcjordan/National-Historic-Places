@@ -3,7 +3,7 @@ class PlaceController < ApplicationController
   
   def nearest
     @places = Place.all.select do |place|
-      coorDist(place.lat, place.lng, params[:lat].to_f, params[:lng].to_f) < 1
+      coorDist(place.lat, place.lng, params[:lat].to_f, params[:lng].to_f) < 3
     end
     
     render :json => @places
