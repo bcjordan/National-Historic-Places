@@ -2,7 +2,7 @@ class PlaceController < ApplicationController
   respond_to :json
   
   def nearest
-    @places = Place.all
-    render :json => @places[0...5]
+    @places = Place.find(:all, :origin =>[0,0], :within=>10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000)
+    render :json => @places
   end
 end
