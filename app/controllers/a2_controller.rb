@@ -7,9 +7,7 @@ class A2Controller < ApplicationController
     else
       grab_location
       @last_10 = Location.find_all_by_user_id(@user.id, :limit => 10)
-      self.class.benchmark("Processing 3")  do 
-        @nearest = Place.find(:all, :origin => @location, :order=>'distance')
-    	end
+      @nearest = Place.find_within(3, :origin => @location, :order=>'distance')
   end
     
     render :action => "map", :layout => false

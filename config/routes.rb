@@ -3,6 +3,7 @@ NationalHistoricPlaces::Application.routes.draw do
 
   resources :locations
 
+  root :to => "a2#map"
   match 'a2' => 'users#new'
   match 'map' => 'a2#map'
   match 'my_recent' => 'users#my_recent'
