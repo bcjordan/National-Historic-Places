@@ -21,6 +21,13 @@
     };
     var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
     
+    
+    var markerhome = new google.maps.Marker({
+         position: latlng,
+         title: "Home"
+    });
+    markerhome.setMap(map);
+    
     <% @nearest.each_with_index do |lmark, i| %>
     
     var contentString<%=i%> = '<%=raw lmark.html.gsub(/[']/, '\\\\\'') %>'
@@ -61,8 +68,11 @@
 <%= "#{@user.name}'s nearest #{pluralize(@nearest.size, "landmark")}:" %> <br/>
 
 <div id="listing">
+<table id="list">
 <% @nearest.each do |lmark| %>
-  <%= "Landmark #{lmark.name} is at #{lmark.lat}, #{lmark.lng}" %> <br/>
+<tr>
+  <%=raw "<td width=200>#{lmark.name}</td><td>#{lmark.lat}</td><td>#{lmark.lng}</td><td>#{lmark.distance}</td>" %>
+</tr>
 <% end %>
 </div>
 

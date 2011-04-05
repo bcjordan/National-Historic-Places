@@ -1,1 +1,15 @@
 National Historic Places is a map that identifies the nearest national historic landmarks to your location.
+
+I did 3 trials profiling the performance of finding Places:
+
+Finding within 3 (47.6ms)
+Finding within 3 (57.7ms)
+Finding within 3 (50.0ms)
+
+Finding within 10 (238.0ms)
+Finding within 10 (294.9ms)
+Finding within 10 (477.9ms)
+
+Finding all  (1553.1ms)
+Finding all  (3021.7ms)
+Finding all  (2031.2ms)

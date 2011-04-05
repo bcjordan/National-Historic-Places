@@ -13,8 +13,8 @@ class UsersController < ApplicationController
   def my_recent
     session[:username] = params[:username] if params[:username]
     @user = User.find_by_name(session[:username])
-    if !@users
-      redirect_to("/a2", :notice => "You must log in to use the API!")
+  if !@users
+    redirect_to("/a2", :notice => "You must log in to use the API!")
     else
       @last_10 = Location.find_all_by_user_id(@user.id, :limit => 10)
 
