@@ -1,7 +1,23 @@
 class A2Controller < ApplicationController  
   def map
-    @place = session[:geo_location]
-    @user_lat = -74.2239989859999
-    @user_lng = 40.4198225810001
+    session[:username] = params[:username] unless session[:username]
+    @user    = User.find_by_name(session[:username])
+    if !@user
+      redirect_to("/a2", :notice => "You must log in!")
+    else
+      grab_location
+      @last_10 = Location.find_all_by_user_id(@user.id, :limit => 10)
+      @nearest = @location.nearesty
+    end
+  end
+  
+  private
+  def grab_location
+    unless (request.remote_ip == "127.0.0.1")
+      @ip = request.remote_ip
+    else @ip = "130.64.22.2" end
+    @user_location = Geokit::Geocoders::MultiGeocoder.geocode(@ip)
+    
+    @location = Location.create(:user_id => @user.id, :ip => @ip, :lat => @user_location.lat, :lng => @user_location.lng)
   end
 end

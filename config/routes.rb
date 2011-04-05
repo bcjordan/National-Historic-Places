@@ -1,5 +1,11 @@
 NationalHistoricPlaces::Application.routes.draw do
-  match 'a2' => 'a2#map'
+  resources :users
+
+  resources :locations
+
+  match 'a2' => 'users#new'
+  match 'map' => 'a2#map'
+  match 'my_recent' => 'users#my_recent'
   
   match 'places/nearest' => 'place#nearest'
 

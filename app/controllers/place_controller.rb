@@ -1,12 +1,12 @@
 class PlaceController < ApplicationController
   respond_to :json
   
-  def nearest
+  def nearesty(lat, lng)
     @places = Place.all.select do |place|
-      coorDist(place.lat, place.lng, params[:lat].to_f, params[:lng].to_f) < 3
+      coorDist(place.lat, place.lng, lat, lng) < 3
     end
-    
-    render :json => @places
+
+    @places
   end
   
   def coorDist(lat1, lon1, lat2, lon2)

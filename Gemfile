@@ -5,9 +5,9 @@ gem 'rails', '3.0.4'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3-ruby', :require => 'sqlite3'
+# gem 'sqlite3-ruby', :require => 'sqlite3'
 
-# gem 'ruby-mysql'
+gem 'ruby-mysql'
 # gem 'mysql2'
 
 gem 'geokit-rails3'
