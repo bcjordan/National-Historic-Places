@@ -13,14 +13,35 @@
 </script>
 <script type="text/javascript">
   function initialize() {
-    var latlng = new google.maps.LatLng(<%= "#{@user_location.lat}, #{@user_location.lng}" %>, 150.644);
+    var latlng = new google.maps.LatLng(<%= "#{@user_location.lat}, #{@user_location.lng}" %>);
     var myOptions = {
-      zoom: 8,
+      zoom: 12,
       center: latlng,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
-    var map = new google.maps.Map(document.getElementById("map_canvas"),
-        myOptions);
+    var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+    
+    <% @nearest.each_with_index do |lmark, i| %>
+    
+    var contentString<%=i%> = '<%=raw lmark.html.gsub(/[']/, '\\\\\'') %>'
+    
+    var infoWindow<%=i%> = new google.maps.InfoWindow({
+        content: contentString<%=i%>
+    });
+    
+    var marker<%=i%> = new google.maps.Marker({
+         position: new google.maps.LatLng(<%= "#{lmark.lat}, #{lmark.lng}" %>),
+         title: "Landmark",
+         icon:  'http://chart.googleapis.com/chart?chst=d_map_xpin_letter&chld=pin|+|<%=raw "%06x" % (rand * 0xffffff)%>|000000|FF0000'
+    });
+    marker<%=i%>.setMap(map);
+    
+    google.maps.event.addListener(marker<%=i%>, 'click', function() {
+      infoWindow<%=i%>.open(map,marker<%=i%>);
+    });
+    
+    <% end %>
+    
   }
 
 </script>
@@ -36,12 +57,12 @@
   Your current IP:        <%= @ip %> <br/>
   </div>
 
-<br/>
+<br/><br/>
 <%= "#{@user.name}'s nearest #{pluralize(@nearest.size, "landmark")}:" %> <br/>
 
 <div id="listing">
 <% @nearest.each do |lmark| %>
-<%= "Landmark #{lmark.name} is at #{lmark.lat}, #{lmark.lng}" %> <br/>
+  <%= "Landmark #{lmark.name} is at #{lmark.lat}, #{lmark.lng}" %> <br/>
 <% end %>
 </div>
 
