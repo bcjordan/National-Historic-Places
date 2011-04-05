@@ -7,7 +7,9 @@ gem 'rails', '3.0.4'
 
 # gem 'sqlite3-ruby', :require => 'sqlite3'
 
-gem 'ruby-mysql'
+gem 'pg'
+
+# gem 'ruby-mysql'
 # gem 'mysql2'
 
 gem 'geokit-rails3'

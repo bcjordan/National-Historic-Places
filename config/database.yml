@@ -1,11 +1,10 @@
 # SQLite version 3.x
 #   gem install sqlite3-ruby (not necessary on OS X Leopard)
 development:
-  adapter: mysql
-  database: bjorda02
-  host: localhost
-  username: root
-  password: notsecret
+  adapter: postgresql
+  database: rails
+  username: brian
+  password: password
   pool: 5
   timeout: 5000
 
@@ -19,10 +18,9 @@ test:
   timeout: 5000
 
 production:
-  adapter: mysql
-  database: bjorda02
-  host: localhost
-  username: root
-  password: notsecret
+  adapter: postgresql
+  database: rails
+  username: brian
+  password: password
   pool: 5
   timeout: 5000
