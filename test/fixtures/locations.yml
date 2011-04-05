@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  lat: 9.99
+  lng: 9.99
+  ip: MyText
+  user_id: 1
+
+two:
+  lat: 9.99
+  lng: 9.99
+  ip: MyText
+  user_id: 1
