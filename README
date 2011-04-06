@@ -1,5 +1,13 @@
 National Historic Places is a map that identifies the nearest national historic landmarks to your location.
 
+To boostrap:
+rake db:create
+rake db:migrate
+rake db:seed # may take a while
+
+rails server
+go to 0.0.0.0:3000
+
 I did 3 trials profiling the performance of finding Places:
 
 Finding within 3 (47.6ms)
